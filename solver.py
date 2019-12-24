@@ -1,8 +1,49 @@
 import cv2
 import numpy as np
 import math
+from PIL import Image
 
-def get_answers(centroids):
+answers={
+    0: {12:'male', 13:'female'},
+    1: {xrange(4,6): 'fall', xrange(7,9): 'spring',xrange(10,12):'summer',},
+    2: {1:'zzz', 2:'zzz',},
+    3: {11:'strongly agree',12:'agree',13:'neutral',14:'disagree',15:'strongly disagree'}
+}
+questions={
+    2:1,
+    3:2,
+    4:3,
+    9:4,
+    xrange(100, 102):5,
+    xrange(104, 106):6,
+    xrange(108, 110):7,
+    xrange(112, 124):8,
+    xrange(124, 126):9,
+    xrange(128, 130):10,
+    xrange(132, 134):11,
+    xrange(136, 138):12,
+    xrange(140, 142):13,
+    xrange(144, 146):14,
+    xrange(156, 158):15,
+    xrange(160, 162):16,
+    xrange(176, 178):17,
+    xrange(176, 178):18,
+    xrange(180, 182):19,
+    xrange(189, 190):20,
+    xrange(200, 202):21,
+    xrange(204, 206):22,
+
+}
+
+def get_answers(centroids,length):
+    answers=np.zeros((1,22),np.str)
+    for i in range(0,21):
+        if i==0:
+            if centroids[0][1]<300:
+                answers[0] = 'male' if (centroids[0][0]/100)%10== 2 else 'female'
+            else:
+                answers[0]='no answer'
+
 
 
 def resize (img,percentage):
@@ -62,23 +103,43 @@ def get_rotAngle(img):
 
     return angle
 
+def fit_image(img):
+    cv2.imwrite('rotated.jpg', img)
 
-img=cv2.imread('tests/test_sample8.jpg',0)
+    img_rotated = Image.open('rotated.jpg')
+
+    # 1654 2338
+    h = img.shape[0]
+    w = img.shape[1]
+    h1 = 2338
+    w1 = 1654
+    cropped_img = img_rotated.crop(((w - w1) // 2, (h - h1) // 2, (w + w1) // 2, (h + h1) // 2))
+
+    cropped_img.save('rotated_new.jpg')
+
+    return cv2.imread('rotated_new.jpg',0)
+
+
+img=cv2.imread('tests/test_sample2.jpg',0)
 
 #handle roation
 angle=get_rotAngle(img)
 
-if angle>0:
+if abs(angle)>0:
     img = rotate_image(img, angle)
+    img=fit_image(img)
 
 #removing all but circles
-#dummy, img = cv2.threshold(img, 50, 255, cv2.THRESH_BINARY)
+dummy, img = cv2.threshold(img, 50, 255, cv2.THRESH_BINARY)
 img=cv2.bitwise_not(img)
 
-#specific_area(img,465,10)
+specific_area(img,465,100)
 
-cv2.imshow('g',resize(img,35))
-cv2.waitKey(0)
+
+
+#1 1257 1390
+# cv2.imshow('g',resize(img,35))
+# cv2.waitKey(0)
 
 #cv2.imwrite('rotated.jpg', rotated)
 
