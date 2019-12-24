@@ -3,46 +3,56 @@ import numpy as np
 import math
 from PIL import Image
 
-answers={
-    0: {12:'male', 13:'female'},
-    1: {xrange(4,6): 'fall', xrange(7,9): 'spring',xrange(10,12):'summer',},
-    2: {1:'zzz', 2:'zzz',},
-    3: {11:'strongly agree',12:'agree',13:'neutral',14:'disagree',15:'strongly disagree'}
-}
+
 questions={
     2:1,
     3:2,
     4:3,
     9:4,
-    xrange(100, 102):5,
-    xrange(104, 106):6,
-    xrange(108, 110):7,
-    xrange(112, 124):8,
-    xrange(124, 126):9,
-    xrange(128, 130):10,
-    xrange(132, 134):11,
-    xrange(136, 138):12,
-    xrange(140, 142):13,
-    xrange(144, 146):14,
-    xrange(156, 158):15,
-    xrange(160, 162):16,
-    xrange(176, 178):17,
-    xrange(176, 178):18,
-    xrange(180, 182):19,
-    xrange(189, 190):20,
-    xrange(200, 202):21,
-    xrange(204, 206):22,
+    101:5,
+    105:6,
+    109:7,
+    113:8,
+    125:9,
+    129:10,
+    133:11,
+    137:12,
+    141:13,
+    145:14,
+    157:15,
+    161:16,
+    165:17,
+    177:18,
+    181:19,
+    189:20,
+    200:21,
+    201:21,
+    205:22,
 
 }
 
+#TODO HANDLE ROGREAM Q
+
+answers={
+    1: {12:'male', 13:'female'},
+    2: {5: 'fall', 8: 'spring',10:'summer',},
+    3: {1:'zzz', 2:'zzz',},
+    4: {11:'strongly agree',12:'agree',13:'neutral',14:'disagree',15:'strongly disagree'}
+}
+
+
 def get_answers(centroids,length):
-    answers=np.zeros((1,22),np.str)
-    for i in range(0,21):
-        if i==0:
-            if centroids[0][1]<300:
-                answers[0] = 'male' if (centroids[0][0]/100)%10== 2 else 'female'
-            else:
-                answers[0]='no answer'
+    answerss = ["" for x in range(length)]
+
+    for i in range(0,22):
+        question_key=questions[int(centroids[i][1]/100)] if centroids[i][1]<1000 else questions[int(centroids[i][1]/10)]
+        if question_key==3:
+            continue
+        elif question_key >3:
+            answerss[question_key-1]=answers[4][int(centroids[i][0]/100)] if answerss[question_key-1]=="" else 'duplicates'
+        else:
+            answerss[question_key-1]=answers[question_key][int(centroids[i][0]/100)] if answerss[question_key-1]=="" else 'duplicates'
+    return answerss
 
 
 
@@ -62,12 +72,14 @@ def specific_area (image,area,error):
     components = components
 
     size = area
-    img2 = np.zeros(image.shape)
+    centroidsn=[]
 
 
     for i in range(1, components):
         if sizes[i] >size-error and sizes[i] <size+error :
-            print(centroids[i])
+            centroidsn.append(centroids[i])
+
+    return centroidsn
 
 def rotate_image(mat, angle):
   # angle in degrees
@@ -120,7 +132,7 @@ def fit_image(img):
     return cv2.imread('rotated_new.jpg',0)
 
 
-img=cv2.imread('tests/test_sample2.jpg',0)
+img=cv2.imread('tests/test_sample7.jpg',0)
 
 #handle roation
 angle=get_rotAngle(img)
@@ -133,7 +145,12 @@ if abs(angle)>0:
 dummy, img = cv2.threshold(img, 50, 255, cv2.THRESH_BINARY)
 img=cv2.bitwise_not(img)
 
-specific_area(img,465,100)
+centroids=specific_area(img,465,100)
+
+centroids=np.array(centroids)
+
+print(get_answers(centroids,centroids.size/2))
+
 
 
 
