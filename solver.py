@@ -16,6 +16,7 @@ questions={
     4:3,
     9:4,
     101:5,
+    102:5,
     105:6,
     106:6,
     109:7,
@@ -35,12 +36,20 @@ questions={
     145:14,
     146:14,
     157:15,
+    156:15,
     161:16,
+    160:16,
+    162:16,
     165:17,
+    166:17,
+    164:17,
     177:18,
+    176:18,
+    180:19,
     181:19,
     182:19,
     189:20,
+    190:20,
     200:21,
     201:21,
     205:22,
@@ -58,20 +67,20 @@ answers={
 
 
 def get_answers(centroids,length):
-    answerss = ["" for x in range(length)]
+    answerss = ["Unanswered" for x in range(length)]
     k=0
 
     for i in range(0,centroids.size/2):
         question_key=questions[int(centroids[i][1]/100)] if centroids[i][1]<1000 else questions[int(centroids[i][1]/10)]
         if question_key==3:
             if int(centroids[i][1]/10)==45:
-                answerss[question_key - 1] = answers[31][int(centroids[i][0] / 100)] if answerss[question_key - 1] == "" else 'duplicates'
+                answerss[question_key - 1] = answers[31][int(centroids[i][0] / 100)] if answerss[question_key - 1] == "Unanswered" else 'duplicates'
             else:
-                answerss[question_key - 1] = answers[32][int(centroids[i][0] / 100)] if answerss[question_key - 1] == "" else 'duplicates'
+                answerss[question_key - 1] = answers[32][int(centroids[i][0] / 100)] if answerss[question_key - 1] == "Unanswered" else 'duplicates'
         elif question_key >3:
-            answerss[question_key-1]=answers[4][int(centroids[i][0]/100)] if answerss[question_key-1]=="" else 'duplicates'
+            answerss[question_key-1]=answers[4][int(centroids[i][0]/100)] if answerss[question_key-1]=="Unanswered" else 'duplicates'
         else:
-            answerss[question_key-1]=answers[question_key][int(centroids[i][0]/100)] if answerss[question_key-1]=="" else 'duplicates'
+            answerss[question_key-1]=answers[question_key][int(centroids[i][0]/100)] if answerss[question_key-1]=="Unanswered" else 'duplicates'
     return answerss
 
 
@@ -204,7 +213,7 @@ def fit_image(img):
 
 img=cv2.imread(sys.argv[1],0)
 
-#handle roation
+#handle rotation
 angle=get_rotAngle(img)
 
 if abs(angle)>0:
@@ -239,15 +248,3 @@ with open("answer.txt", "w") as file:
 
 
 
-
-
-
-#1 1257 1390
-# cv2.imshow('g',resize(img,35))
-# cv2.waitKey(0)
-
-#cv2.imwrite('rotated.jpg', rotated)
-
-
-# specific_area(thresh)
-# thresh=resize(thresh,35)

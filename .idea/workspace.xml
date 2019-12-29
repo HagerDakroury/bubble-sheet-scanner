@@ -3,8 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="dd1c9f8f-9273-4c3a-a8ad-d5d0859d600b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/solver/EXE-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/solver/EXE-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/solver/PKG-00.pkg" beforeDir="false" afterPath="$PROJECT_DIR$/build/solver/PKG-00.pkg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rotated.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rotated.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rotated_new.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rotated_new.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/solver.exe" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/solver.py" beforeDir="false" afterPath="$PROJECT_DIR$/solver.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,27 +19,7 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/test_sample2.jpg">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/test_sample4.jpg">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/test_sample7.jpg">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rotated_new.jpg">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rotated.jpg">
           <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
@@ -50,15 +33,43 @@
           <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/test_sample6.jpg">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/test_sample4.jpg">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/test_sample3.jpg">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/solver.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="9" lean-forward="true" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
+            <state relative-caret-position="314">
+              <caret line="227" lean-forward="true" selection-start-line="227" selection-end-line="227" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
-                <element signature="e#2724#3069#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/test_sample1.jpg">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/answer.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
             </state>
           </provider>
         </entry>
@@ -88,12 +99,13 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/solver.py" />
+        <option value="$PROJECT_DIR$/answer.txt" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="167" />
-    <option name="y" value="11" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="18" />
+    <option name="y" value="7" />
     <option name="width" value="1183" />
     <option name="height" value="1008" />
   </component>
@@ -109,11 +121,6 @@
               <item name="bubble-sheet-scanner" type="b2602c69:ProjectViewProjectNode" />
               <item name="bubble-sheet-scanner" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="bubble-sheet-scanner" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bubble-sheet-scanner" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -126,6 +133,9 @@
     <property name="settings.editor.selected.configurable" value="preferences.externalTools" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Learning\College\Fall2019\bubble-sheet-scanner" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Learning\College\Fall2019\bubble-sheet-scanner\tests" />
     </key>
@@ -200,19 +210,18 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="134" y="9" width="946" height="806" extended-state="0" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1529153" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15465961" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Python Console" weight="0.32988167" />
-      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.33086053" />
+      <window_info anchor="bottom" id="Terminal" visible="true" weight="0.14164306" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.39465874" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.41246292" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3976261" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -221,17 +230,6 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/solver.py</url>
-          <line>71</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/-762174762/cv2/__init__.py">
@@ -251,28 +249,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_sample1.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_sample3.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_sample5.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_sample6.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_sample10.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_sample4.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_sample9.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_sample8.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_sample7.jpg">
@@ -284,9 +264,6 @@
     <entry file="file://$PROJECT_DIR$/rotated.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/rotated_new.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/-762174762/__builtin__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="127">
@@ -294,16 +271,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_sample1.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_sample6.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_sample9.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_sample8.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_sample4.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_sample3.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rotated_new.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/answer.txt">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/solver.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="9" lean-forward="true" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
+        <state relative-caret-position="314">
+          <caret line="227" lean-forward="true" selection-start-line="227" selection-end-line="227" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
-            <element signature="e#2724#3069#0" />
           </folding>
         </state>
       </provider>
