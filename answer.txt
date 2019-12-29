@@ -1,0 +1,22 @@
+female
+fall
+BLDG
+disagree
+neutral
+disagree
+agree
+neutral
+strongly agree
+strongly disagree
+disagree
+strongly agree
+disagree
+agree
+agree
+strongly agree
+neutral
+neutral
+agree
+neutral
+strongly agree
+agree

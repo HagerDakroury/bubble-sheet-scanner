@@ -2,6 +2,12 @@ import cv2
 import numpy as np
 import math
 from PIL import Image
+import os
+import sys
+
+recx=15
+recy=5
+reca=1138
 
 
 questions={
@@ -11,19 +17,29 @@ questions={
     9:4,
     101:5,
     105:6,
+    106:6,
     109:7,
+    110:7,
     113:8,
+    114:8,
     125:9,
+    126:9,
     129:10,
+    130:10,
     133:11,
+    134:11,
     137:12,
+    138:12,
     141:13,
+    142:13,
     145:14,
+    146:14,
     157:15,
     161:16,
     165:17,
     177:18,
     181:19,
+    182:19,
     189:20,
     200:21,
     201:21,
@@ -31,23 +47,27 @@ questions={
 
 }
 
-#TODO HANDLE ROGREAM Q
 
 answers={
     1: {12:'male', 13:'female'},
     2: {5: 'fall', 8: 'spring',10:'summer',},
-    3: {1:'zzz', 2:'zzz',},
+    31: {9:'ERGY', 12:'MANF', 11:'COMM', 10:'COMM', 7:'BLDG',8:'CESS',5:'ENVER',4:'MCTA',3:'MCTA'},
+    32: {7: 'CISE', 8: 'HAUD', 5: 'MATL', 4: 'LAAR', 3: 'LAAR'},
     4: {11:'strongly agree',12:'agree',13:'neutral',14:'disagree',15:'strongly disagree'}
 }
 
 
 def get_answers(centroids,length):
     answerss = ["" for x in range(length)]
+    k=0
 
-    for i in range(0,22):
+    for i in range(0,centroids.size/2):
         question_key=questions[int(centroids[i][1]/100)] if centroids[i][1]<1000 else questions[int(centroids[i][1]/10)]
         if question_key==3:
-            continue
+            if int(centroids[i][1]/10)==45:
+                answerss[question_key - 1] = answers[31][int(centroids[i][0] / 100)] if answerss[question_key - 1] == "" else 'duplicates'
+            else:
+                answerss[question_key - 1] = answers[32][int(centroids[i][0] / 100)] if answerss[question_key - 1] == "" else 'duplicates'
         elif question_key >3:
             answerss[question_key-1]=answers[4][int(centroids[i][0]/100)] if answerss[question_key-1]=="" else 'duplicates'
         else:
@@ -63,6 +83,49 @@ def resize (img,percentage):
     dim = (width, height)
     # resize image
     return cv2.resize(img, dim, interpolation=cv2.INTER_AREA)
+
+def detect_rec(img):
+    global recx
+    global recy
+    global reca
+
+    dummy, img = cv2.threshold(img, 125, 255, cv2.THRESH_BINARY)
+    se = cv2.getStructuringElement(cv2.MORPH_RECT, (10, 10))
+
+    img = cv2.morphologyEx(img, cv2.MORPH_OPEN, se)
+    img = cv2.bitwise_not(img)
+    #
+    # cv2.imshow('1',img)
+    # cv2.waitKey(0)
+    #
+
+    image = img.astype('uint8')
+    components, output, stats, centroids = cv2.connectedComponentsWithStats(image, connectivity=4)
+    sizes = stats[:, -1]
+    components = components
+
+    size = int(reca/10)
+    centroidsn = []
+
+    for i in range(1, components):
+        if int(sizes[i]/10)>size-2 and int(sizes[i]/10)<size+2 :
+            centroidsn.append(centroids[i])
+
+    if centroidsn[0][0]<1400 and centroidsn[0][1]>100:
+        return -1
+
+    if centroidsn[0][0]<1400:
+        return 1
+
+    if centroidsn[0][1]>100:
+        return 0
+
+    return 5
+
+
+
+
+
 
 def specific_area (image,area,error):
     #image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -97,7 +160,7 @@ def rotate_image(mat, angle):
     rotation_mat[0, 2] += bound_w/2 - image_center[0]
     rotation_mat[1, 2] += bound_h/2 - image_center[1]
 
-    rotated_mat = cv2.warpAffine(mat, rotation_mat, (bound_w, bound_h))
+    rotated_mat = cv2.warpAffine(mat, rotation_mat, (bound_w, bound_h),borderValue=(255,255,255))
     return rotated_mat
 
 def get_rotAngle(img):
@@ -131,8 +194,15 @@ def fit_image(img):
 
     return cv2.imread('rotated_new.jpg',0)
 
+# #check if width>height
+# def fix_rot90:
+#
+# #check circles position to y
+# def fix_rot180:
+#
 
-img=cv2.imread('tests/test_sample7.jpg',0)
+
+img=cv2.imread(sys.argv[1],0)
 
 #handle roation
 angle=get_rotAngle(img)
@@ -140,6 +210,16 @@ angle=get_rotAngle(img)
 if abs(angle)>0:
     img = rotate_image(img, angle)
     img=fit_image(img)
+
+
+flipDir=detect_rec(img)
+
+if flipDir!=5:
+    img=cv2.flip(img,flipDir)
+
+
+
+
 
 #removing all but circles
 dummy, img = cv2.threshold(img, 50, 255, cv2.THRESH_BINARY)
@@ -149,7 +229,15 @@ centroids=specific_area(img,465,100)
 
 centroids=np.array(centroids)
 
-print(get_answers(centroids,centroids.size/2))
+
+answer=get_answers(centroids,22)
+
+
+with open("answer.txt", "w") as file:
+    for i in answer:
+        file.write(i+'\n')
+
+
 
 
 
